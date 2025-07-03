@@ -1,0 +1,11 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // TEMPORARY: Allow all read/write access for testing
+    // ⚠️ WARNING: This is NOT secure for production use!
+    // Only use this temporarily to test if the 400 errors are due to security rules
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
